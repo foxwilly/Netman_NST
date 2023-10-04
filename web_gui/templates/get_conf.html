@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cisco Router Configuration</title>
+</head>
+<body>
+    <h2>Stored Configurations:</h2>
+    <a href="/"> <span> Return Home</span></a>
+    <ul>
+        {% for config in router_configs %}
+            <pre>{{ config }}</pre>
+        {% endfor %}
+    </ul>
+    <h5>Save Configuration:</h5>
+    <form method="POST">
+        file name: <input type="text" name="file_name"><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

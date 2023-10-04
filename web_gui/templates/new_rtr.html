@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Router Configuration</title>
+</head>
+<body>
+    <h1> Router Configuration</h1>
+
+    <h2>Enter Router Configuration:</h2>
+    <a href="/"> <span> Return Home</span></a>
+    <form method="POST">
+        Hostname: <input type="text" name="hostname"><br>
+        Username: <input type="text" name="username"><br>
+        Password: <input type="password" name="password"><br>
+        Configuration: <textarea name="config" rows="4" cols="70">
+            {% for text in txt_contents %}
+               {{ text }}
+            {% endfor %}
+        </textarea><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <h2>Stored Configurations:</h2>
+    <ul>
+        {% for config in router_configs %}
+        <li>
+            Hostname: {{ config.hostname }}<br>
+            Username: {{ config.username }}<br>
+            Password: {{ config.password }}<br>
+            Configuration: <pre>{{ config.config }}</pre><br>
+        </li>
+        {% endfor %}
+    </ul>
+    
+</body>
+</html>
