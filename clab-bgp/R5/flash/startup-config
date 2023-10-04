@@ -1,0 +1,67 @@
+! Startup-config last modified at Wed Oct  4 09:11:12 2023 by root
+! device: R5 (cEOSLab, EOS-4.30.2F-33092737.4302F (engineering build))
+!
+no aaa root
+!
+username admin privilege 15 role network-admin secret sha512 $6$q7rxnFPBdUBokO6F$WTwfyP70x9.HnajAr/2D8facyvqqxecIAYeMxXOifjJqJ5WbMKWZzsWlkiUj4J975VY5vXsqXG7BLFDgA5jtR.
+!
+transceiver qsfp default-mode 4x10G
+!
+service routing protocols model multi-agent
+!
+hostname ceos5
+!
+snmp-server community public ro
+!
+spanning-tree mode mstp
+!
+system l1
+   unsupported speed action error
+   unsupported error-correction action error
+!
+management api http-commands
+   no shutdown
+!
+management api gnmi
+   transport grpc default
+!
+management api netconf
+   transport ssh default
+!
+interface Ethernet1
+   no switchport
+!
+interface Ethernet2
+   no switchport
+   ip address 192.168.10.1/24
+   ip ospf area 0.0.0.0
+!
+interface Ethernet3
+   no switchport
+   ip address 192.168.11.1/24
+!
+interface Ethernet4
+   no switchport
+   ip address 192.168.12.1/24
+!
+interface Loopback0
+   ip address 3.3.3.3/32
+!
+interface Management0
+   ip address 172.20.20.3/24
+   ipv6 address 2001:172:20:20::3/64
+!
+interface Management1
+   ip address 172.20.20.8/24
+   ipv6 address 2001:172:20:20::8/64
+!
+ip routing
+!
+router bgp 65000
+   neighbor 192.168.11.2 remote-as 65000
+   neighbor 192.168.12.2 remote-as 65000
+   network 192.168.10.0/24
+   network 192.168.11.0/24
+   network 192.168.12.0/24
+!
+end

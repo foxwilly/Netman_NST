@@ -5,31 +5,8 @@ topology:
     kind: linux
     # img for hosts
     image: wbitt/network-multitool:alpine-minimal
-    #image: wbitt/network-multitool:alpine-extra
-    # image: nicolaka/netshoot:latest
   nodes:
   # BGP ROUTERS
-    R5:
-      image: frrouting/frr
-      binds:
-        - config/R5/daemons:/etc/frr/daemons
-        - config/R5/frr.conf:/etc/frr/frr.conf
-        - config/zebra.conf:/etc/frr/zebra.conf 
-        - config/vtysh.conf:/etc/frr/vtysh.conf 
-    R4:
-      image: frrouting/frr
-      binds:
-        - config/R4/daemons:/etc/frr/daemons
-        - config/R4/frr.conf:/etc/frr/frr.conf
-        - config/zebra.conf:/etc/frr/zebra.conf 
-        - config/vtysh.conf:/etc/frr/vtysh.conf 
-    R3:
-      image: frrouting/frr
-      binds:
-        - config/R3/daemons:/etc/frr/daemons
-        - config/R3/frr.conf:/etc/frr/frr.conf
-        - config/zebra.conf:/etc/frr/zebra.conf 
-        - config/vtysh.conf:/etc/frr/vtysh.conf 
     Webserver:
       exec:
         - ip addr add 192.168.10.2/24 dev eth1
@@ -54,19 +31,43 @@ topology:
     R1:
       kind: ceos
       image: ceos:4.30.2F
-      startup-config: ceos_r1.cfg
+      startup-config: config/R1/ceos_r1.cfg
       binds:
-        - mymapping.json:/mnt/flash/EosIntfMapping.json:ro
+        - config/mymapping.json:/mnt/flash/EosIntfMapping.json:ro
       ports:
         - 6031:6030 
     R2:
       kind: ceos
       image: ceos:4.30.2F
-      startup-config: ceos_r2.cfg
+      startup-config: config/R2/ceos_r2.cfg
       binds:
-        - mymapping.json:/mnt/flash/EosIntfMapping.json:ro
+        - config/mymapping.json:/mnt/flash/EosIntfMapping.json:ro
       ports:
         - 6032:6030 
+    R3:
+      kind: ceos
+      image: ceos:4.30.2F
+      startup-config: config/R3/ceos_r3.cfg
+      binds:
+        - config/mymapping.json:/mnt/flash/EosIntfMapping.json:ro
+      ports:
+        - 6033:6030 
+    R4:
+      kind: ceos
+      image: ceos:4.30.2F
+      startup-config: config/R4/ceos_r4.cfg
+      binds:
+        - config/mymapping.json:/mnt/flash/EosIntfMapping.json:ro
+ #     ports:
+ #       - 6032:6030 
+    R5:
+      kind: ceos
+      image: ceos:4.30.2F
+      startup-config: config/R5/ceos_r5.cfg
+      binds:
+        - config/mymapping.json:/mnt/flash/EosIntfMapping.json:ro
+ #     ports:
+ #       - 6032:6030 
     S1:
       image: globocom/openvswitch
       exec:
@@ -79,7 +80,7 @@ topology:
         - ifconfig ovsbr0 up
     H1:
       binds:
-        - interfaces:/etc/network/interfaces
+        - config/H1/interfaces:/etc/network/interfaces
       exec:
         #        - ip addr add 10.1.0.2/24 dev eth1
         - ip addr flush dev eth1  # Clear any existing IP configuration (optional)
@@ -114,7 +115,7 @@ topology:
       ports:
         - 9090:9090
       binds:
-        - ./prometheus/:/etc/prometheus/
+        - ./config/prometheus/:/etc/prometheus/
       cmd: |
         --config.file=/etc/prometheus/prometheus.yaml
         --web.console.libraries=/usr/share/prometheus/console_libraries
@@ -125,9 +126,9 @@ topology:
       kind: linux
       image: grafana/grafana:latest
       binds:
-        - grafana/datasources/datasource.yaml:/etc/grafana/provisioning/datasources/datasource.yaml:ro
-        - grafana/dashboards.yaml:/etc/grafana/provisioning/dashboards/dashboards.yaml:ro
-        - grafana/dashboards/:/var/lib/grafana/dashboards
+        - config/grafana/datasources/datasource.yaml:/etc/grafana/provisioning/datasources/datasource.yaml:ro
+        - config/grafana/dashboards.yaml:/etc/grafana/provisioning/dashboards/dashboards.yaml:ro
+        - config/grafana/dashboards/:/var/lib/grafana/dashboards
       ports:
         - 3000:3000
   links:

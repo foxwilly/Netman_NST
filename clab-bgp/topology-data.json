@@ -1,0 +1,1037 @@
+{
+  "name": "bgp",
+  "type": "clab",
+  "clab": {
+    "config": {
+      "prefix": "clab",
+      "mgmt": {
+        "network": "clab",
+        "bridge": "br-dae44a78a079",
+        "ipv4-subnet": "172.20.20.0/24",
+        "ipv4-gw": "172.20.20.1",
+        "ipv6-subnet": "2001:172:20:20::/64",
+        "ipv6-gw": "2001:172:20:20::1",
+        "mtu": "1500",
+        "external-access": true
+      }
+    }
+  },
+  "nodes": {
+    "DHCP": {
+      "index": "0",
+      "shortname": "DHCP",
+      "longname": "clab-bgp-DHCP",
+      "fqdn": "DHCP.bgp.io",
+      "group": "",
+      "labdir": "/home/willy/Netman_NST/clab-bgp/DHCP",
+      "kind": "linux",
+      "image": "dhcp-image",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.16",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "2001:172:20:20::10",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-dae44a78a079",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/willy/Netman_NST/clab-bgp/DHCP",
+        "clab-node-name": "DHCP",
+        "clab-node-type": "",
+        "clab-topo-file": "/home/willy/Netman_NST/bgp.yml",
+        "containerlab": "bgp"
+      },
+      "port-bindings": [
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 53,
+          "protocol": "udp"
+        },
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 67,
+          "protocol": "udp"
+        }
+      ]
+    },
+    "H1": {
+      "index": "1",
+      "shortname": "H1",
+      "longname": "clab-bgp-H1",
+      "fqdn": "H1.bgp.io",
+      "group": "",
+      "labdir": "/home/willy/Netman_NST/clab-bgp/H1",
+      "kind": "linux",
+      "image": "wbitt/network-multitool:alpine-minimal",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.15",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "2001:172:20:20::f",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-dae44a78a079",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/willy/Netman_NST/clab-bgp/H1",
+        "clab-node-name": "H1",
+        "clab-node-type": "",
+        "clab-topo-file": "/home/willy/Netman_NST/bgp.yml",
+        "containerlab": "bgp"
+      },
+      "port-bindings": [
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 11443,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 1180,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 443,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 80,
+          "protocol": "tcp"
+        }
+      ]
+    },
+    "H2": {
+      "index": "2",
+      "shortname": "H2",
+      "longname": "clab-bgp-H2",
+      "fqdn": "H2.bgp.io",
+      "group": "",
+      "labdir": "/home/willy/Netman_NST/clab-bgp/H2",
+      "kind": "linux",
+      "image": "wbitt/network-multitool:alpine-minimal",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.9",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "2001:172:20:20::9",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-dae44a78a079",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/willy/Netman_NST/clab-bgp/H2",
+        "clab-node-name": "H2",
+        "clab-node-type": "",
+        "clab-topo-file": "/home/willy/Netman_NST/bgp.yml",
+        "containerlab": "bgp"
+      },
+      "port-bindings": [
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 11443,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 1180,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 443,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 80,
+          "protocol": "tcp"
+        }
+      ]
+    },
+    "H3": {
+      "index": "3",
+      "shortname": "H3",
+      "longname": "clab-bgp-H3",
+      "fqdn": "H3.bgp.io",
+      "group": "",
+      "labdir": "/home/willy/Netman_NST/clab-bgp/H3",
+      "kind": "linux",
+      "image": "wbitt/network-multitool:alpine-minimal",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.17",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "2001:172:20:20::11",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-dae44a78a079",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/willy/Netman_NST/clab-bgp/H3",
+        "clab-node-name": "H3",
+        "clab-node-type": "",
+        "clab-topo-file": "/home/willy/Netman_NST/bgp.yml",
+        "containerlab": "bgp"
+      },
+      "port-bindings": [
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 11443,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 1180,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 443,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 80,
+          "protocol": "tcp"
+        }
+      ]
+    },
+    "H4": {
+      "index": "4",
+      "shortname": "H4",
+      "longname": "clab-bgp-H4",
+      "fqdn": "H4.bgp.io",
+      "group": "",
+      "labdir": "/home/willy/Netman_NST/clab-bgp/H4",
+      "kind": "linux",
+      "image": "wbitt/network-multitool:alpine-minimal",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.18",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "2001:172:20:20::12",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-dae44a78a079",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/willy/Netman_NST/clab-bgp/H4",
+        "clab-node-name": "H4",
+        "clab-node-type": "",
+        "clab-topo-file": "/home/willy/Netman_NST/bgp.yml",
+        "containerlab": "bgp"
+      },
+      "port-bindings": [
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 1180,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 443,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 80,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 11443,
+          "protocol": "tcp"
+        }
+      ]
+    },
+    "NMAS": {
+      "index": "5",
+      "shortname": "NMAS",
+      "longname": "clab-bgp-NMAS",
+      "fqdn": "NMAS.bgp.io",
+      "group": "",
+      "labdir": "/home/willy/Netman_NST/clab-bgp/NMAS",
+      "kind": "linux",
+      "image": "wbitt/network-multitool:alpine-minimal",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.13",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "2001:172:20:20::d",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-dae44a78a079",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/willy/Netman_NST/clab-bgp/NMAS",
+        "clab-node-name": "NMAS",
+        "clab-node-type": "",
+        "clab-topo-file": "/home/willy/Netman_NST/bgp.yml",
+        "containerlab": "bgp"
+      },
+      "port-bindings": [
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 11443,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 1180,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 443,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 80,
+          "protocol": "tcp"
+        }
+      ]
+    },
+    "R1": {
+      "index": "6",
+      "shortname": "R1",
+      "longname": "clab-bgp-R1",
+      "fqdn": "R1.bgp.io",
+      "group": "",
+      "labdir": "/home/willy/Netman_NST/clab-bgp/R1",
+      "kind": "ceos",
+      "image": "ceos:4.30.2F",
+      "mgmt-net": "",
+      "mgmt-intf": "Management1",
+      "mgmt-ipv4-address": "172.20.20.10",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "2001:172:20:20::a",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "00:1c:73:cf:32:8b",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-dae44a78a079",
+        "clab-node-group": "",
+        "clab-node-kind": "ceos",
+        "clab-node-lab-dir": "/home/willy/Netman_NST/clab-bgp/R1",
+        "clab-node-name": "R1",
+        "clab-node-type": "",
+        "clab-topo-file": "/home/willy/Netman_NST/bgp.yml",
+        "containerlab": "bgp"
+      },
+      "port-bindings": [
+        {
+          "host-ip": "0.0.0.0",
+          "host-port": 6031,
+          "port": 6030,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "::",
+          "host-port": 6031,
+          "port": 6030,
+          "protocol": "tcp"
+        }
+      ]
+    },
+    "R2": {
+      "index": "7",
+      "shortname": "R2",
+      "longname": "clab-bgp-R2",
+      "fqdn": "R2.bgp.io",
+      "group": "",
+      "labdir": "/home/willy/Netman_NST/clab-bgp/R2",
+      "kind": "ceos",
+      "image": "ceos:4.30.2F",
+      "mgmt-net": "",
+      "mgmt-intf": "Management1",
+      "mgmt-ipv4-address": "172.20.20.2",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "2001:172:20:20::2",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "00:1c:73:ed:cf:b6",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-dae44a78a079",
+        "clab-node-group": "",
+        "clab-node-kind": "ceos",
+        "clab-node-lab-dir": "/home/willy/Netman_NST/clab-bgp/R2",
+        "clab-node-name": "R2",
+        "clab-node-type": "",
+        "clab-topo-file": "/home/willy/Netman_NST/bgp.yml",
+        "containerlab": "bgp"
+      },
+      "port-bindings": [
+        {
+          "host-ip": "0.0.0.0",
+          "host-port": 6032,
+          "port": 6030,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "::",
+          "host-port": 6032,
+          "port": 6030,
+          "protocol": "tcp"
+        }
+      ]
+    },
+    "R3": {
+      "index": "8",
+      "shortname": "R3",
+      "longname": "clab-bgp-R3",
+      "fqdn": "R3.bgp.io",
+      "group": "",
+      "labdir": "/home/willy/Netman_NST/clab-bgp/R3",
+      "kind": "ceos",
+      "image": "ceos:4.30.2F",
+      "mgmt-net": "",
+      "mgmt-intf": "Management1",
+      "mgmt-ipv4-address": "172.20.20.7",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "2001:172:20:20::7",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "00:1c:73:80:54:8d",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-dae44a78a079",
+        "clab-node-group": "",
+        "clab-node-kind": "ceos",
+        "clab-node-lab-dir": "/home/willy/Netman_NST/clab-bgp/R3",
+        "clab-node-name": "R3",
+        "clab-node-type": "",
+        "clab-topo-file": "/home/willy/Netman_NST/bgp.yml",
+        "containerlab": "bgp"
+      },
+      "port-bindings": [
+        {
+          "host-ip": "0.0.0.0",
+          "host-port": 6033,
+          "port": 6030,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "::",
+          "host-port": 6033,
+          "port": 6030,
+          "protocol": "tcp"
+        }
+      ]
+    },
+    "R4": {
+      "index": "9",
+      "shortname": "R4",
+      "longname": "clab-bgp-R4",
+      "fqdn": "R4.bgp.io",
+      "group": "",
+      "labdir": "/home/willy/Netman_NST/clab-bgp/R4",
+      "kind": "ceos",
+      "image": "ceos:4.30.2F",
+      "mgmt-net": "",
+      "mgmt-intf": "Management1",
+      "mgmt-ipv4-address": "172.20.20.6",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "2001:172:20:20::6",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "00:1c:73:a2:d3:de",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-dae44a78a079",
+        "clab-node-group": "",
+        "clab-node-kind": "ceos",
+        "clab-node-lab-dir": "/home/willy/Netman_NST/clab-bgp/R4",
+        "clab-node-name": "R4",
+        "clab-node-type": "",
+        "clab-topo-file": "/home/willy/Netman_NST/bgp.yml",
+        "containerlab": "bgp"
+      },
+      "port-bindings": [
+      ]
+    },
+    "R5": {
+      "index": "10",
+      "shortname": "R5",
+      "longname": "clab-bgp-R5",
+      "fqdn": "R5.bgp.io",
+      "group": "",
+      "labdir": "/home/willy/Netman_NST/clab-bgp/R5",
+      "kind": "ceos",
+      "image": "ceos:4.30.2F",
+      "mgmt-net": "",
+      "mgmt-intf": "Management1",
+      "mgmt-ipv4-address": "172.20.20.8",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "2001:172:20:20::8",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "00:1c:73:9e:e6:53",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-dae44a78a079",
+        "clab-node-group": "",
+        "clab-node-kind": "ceos",
+        "clab-node-lab-dir": "/home/willy/Netman_NST/clab-bgp/R5",
+        "clab-node-name": "R5",
+        "clab-node-type": "",
+        "clab-topo-file": "/home/willy/Netman_NST/bgp.yml",
+        "containerlab": "bgp"
+      },
+      "port-bindings": [
+      ]
+    },
+    "S1": {
+      "index": "11",
+      "shortname": "S1",
+      "longname": "clab-bgp-S1",
+      "fqdn": "S1.bgp.io",
+      "group": "",
+      "labdir": "/home/willy/Netman_NST/clab-bgp/S1",
+      "kind": "linux",
+      "image": "globocom/openvswitch",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.4",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "2001:172:20:20::4",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-dae44a78a079",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/willy/Netman_NST/clab-bgp/S1",
+        "clab-node-name": "S1",
+        "clab-node-type": "",
+        "clab-topo-file": "/home/willy/Netman_NST/bgp.yml",
+        "containerlab": "bgp"
+      },
+      "port-bindings": [
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 22,
+          "protocol": "tcp"
+        }
+      ]
+    },
+    "S2": {
+      "index": "12",
+      "shortname": "S2",
+      "longname": "clab-bgp-S2",
+      "fqdn": "S2.bgp.io",
+      "group": "",
+      "labdir": "/home/willy/Netman_NST/clab-bgp/S2",
+      "kind": "linux",
+      "image": "globocom/openvswitch",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.19",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "2001:172:20:20::13",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-dae44a78a079",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/willy/Netman_NST/clab-bgp/S2",
+        "clab-node-name": "S2",
+        "clab-node-type": "",
+        "clab-topo-file": "/home/willy/Netman_NST/bgp.yml",
+        "containerlab": "bgp"
+      },
+      "port-bindings": [
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 22,
+          "protocol": "tcp"
+        }
+      ]
+    },
+    "S3": {
+      "index": "13",
+      "shortname": "S3",
+      "longname": "clab-bgp-S3",
+      "fqdn": "S3.bgp.io",
+      "group": "",
+      "labdir": "/home/willy/Netman_NST/clab-bgp/S3",
+      "kind": "linux",
+      "image": "globocom/openvswitch",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.11",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "2001:172:20:20::b",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-dae44a78a079",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/willy/Netman_NST/clab-bgp/S3",
+        "clab-node-name": "S3",
+        "clab-node-type": "",
+        "clab-topo-file": "/home/willy/Netman_NST/bgp.yml",
+        "containerlab": "bgp"
+      },
+      "port-bindings": [
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 22,
+          "protocol": "tcp"
+        }
+      ]
+    },
+    "S4": {
+      "index": "14",
+      "shortname": "S4",
+      "longname": "clab-bgp-S4",
+      "fqdn": "S4.bgp.io",
+      "group": "",
+      "labdir": "/home/willy/Netman_NST/clab-bgp/S4",
+      "kind": "linux",
+      "image": "globocom/openvswitch",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.5",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "2001:172:20:20::5",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-dae44a78a079",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/willy/Netman_NST/clab-bgp/S4",
+        "clab-node-name": "S4",
+        "clab-node-type": "",
+        "clab-topo-file": "/home/willy/Netman_NST/bgp.yml",
+        "containerlab": "bgp"
+      },
+      "port-bindings": [
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 22,
+          "protocol": "tcp"
+        }
+      ]
+    },
+    "Webserver": {
+      "index": "15",
+      "shortname": "Webserver",
+      "longname": "clab-bgp-Webserver",
+      "fqdn": "Webserver.bgp.io",
+      "group": "",
+      "labdir": "/home/willy/Netman_NST/clab-bgp/Webserver",
+      "kind": "linux",
+      "image": "wbitt/network-multitool:alpine-minimal",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.14",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "2001:172:20:20::e",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-dae44a78a079",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/willy/Netman_NST/clab-bgp/Webserver",
+        "clab-node-name": "Webserver",
+        "clab-node-type": "",
+        "clab-topo-file": "/home/willy/Netman_NST/bgp.yml",
+        "containerlab": "bgp"
+      },
+      "port-bindings": [
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 11443,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 1180,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 443,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 80,
+          "protocol": "tcp"
+        }
+      ]
+    },
+    "grafana": {
+      "index": "16",
+      "shortname": "grafana",
+      "longname": "clab-bgp-grafana",
+      "fqdn": "grafana.bgp.io",
+      "group": "",
+      "labdir": "/home/willy/Netman_NST/clab-bgp/grafana",
+      "kind": "linux",
+      "image": "grafana/grafana:latest",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.3",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "2001:172:20:20::3",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-dae44a78a079",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/willy/Netman_NST/clab-bgp/grafana",
+        "clab-node-name": "grafana",
+        "clab-node-type": "",
+        "clab-topo-file": "/home/willy/Netman_NST/bgp.yml",
+        "containerlab": "bgp"
+      },
+      "port-bindings": [
+        {
+          "host-ip": "0.0.0.0",
+          "host-port": 3000,
+          "port": 3000,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "::",
+          "host-port": 3000,
+          "port": 3000,
+          "protocol": "tcp"
+        }
+      ]
+    },
+    "prometheus": {
+      "index": "17",
+      "shortname": "prometheus",
+      "longname": "clab-bgp-prometheus",
+      "fqdn": "prometheus.bgp.io",
+      "group": "",
+      "labdir": "/home/willy/Netman_NST/clab-bgp/prometheus",
+      "kind": "linux",
+      "image": "prom/prometheus:latest",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.12",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "2001:172:20:20::c",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-dae44a78a079",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/willy/Netman_NST/clab-bgp/prometheus",
+        "clab-node-name": "prometheus",
+        "clab-node-type": "",
+        "clab-topo-file": "/home/willy/Netman_NST/bgp.yml",
+        "containerlab": "bgp"
+      },
+      "port-bindings": [
+        {
+          "host-ip": "0.0.0.0",
+          "host-port": 9090,
+          "port": 9090,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "::",
+          "host-port": 9090,
+          "port": 9090,
+          "protocol": "tcp"
+        }
+      ]
+    }
+  },
+  "links": [
+    {
+      "a": {
+        "node": "R5",
+        "interface": "eth4",
+        "mac": "aa:c1:ab:a9:a3:75",
+        "peer": "z"
+      },
+      "z": {
+        "node": "R4",
+        "interface": "eth4",
+        "mac": "aa:c1:ab:6d:ec:a1",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "R4",
+        "interface": "eth3",
+        "mac": "aa:c1:ab:16:d1:f1",
+        "peer": "z"
+      },
+      "z": {
+        "node": "R3",
+        "interface": "eth3",
+        "mac": "aa:c1:ab:8a:0f:97",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "R3",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:64:87:82",
+        "peer": "z"
+      },
+      "z": {
+        "node": "R5",
+        "interface": "eth3",
+        "mac": "aa:c1:ab:06:18:a0",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "Webserver",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:8e:a3:92",
+        "peer": "z"
+      },
+      "z": {
+        "node": "R5",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:7b:e9:3f",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "R3",
+        "interface": "eth4",
+        "mac": "aa:c1:ab:b2:ca:d6",
+        "peer": "z"
+      },
+      "z": {
+        "node": "S3",
+        "interface": "e1",
+        "mac": "aa:c1:ab:0d:c5:16",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "R4",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:e8:58:6a",
+        "peer": "z"
+      },
+      "z": {
+        "node": "S4",
+        "interface": "e1",
+        "mac": "aa:c1:ab:89:95:8a",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "S3",
+        "interface": "e2",
+        "mac": "aa:c1:ab:03:7f:59",
+        "peer": "z"
+      },
+      "z": {
+        "node": "S4",
+        "interface": "e2",
+        "mac": "aa:c1:ab:89:fe:b6",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "NMAS",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:f5:ea:7c",
+        "peer": "z"
+      },
+      "z": {
+        "node": "S3",
+        "interface": "e3",
+        "mac": "aa:c1:ab:39:8a:c4",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "S3",
+        "interface": "e4",
+        "mac": "aa:c1:ab:43:75:bf",
+        "peer": "z"
+      },
+      "z": {
+        "node": "R1",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:fc:1d:28",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "S4",
+        "interface": "e3",
+        "mac": "aa:c1:ab:d8:cb:33",
+        "peer": "z"
+      },
+      "z": {
+        "node": "R2",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:5b:51:63",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "R1",
+        "interface": "eth3",
+        "mac": "aa:c1:ab:7c:7a:19",
+        "peer": "z"
+      },
+      "z": {
+        "node": "S1",
+        "interface": "e1",
+        "mac": "aa:c1:ab:9f:86:00",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "R2",
+        "interface": "eth3",
+        "mac": "aa:c1:ab:d2:38:f1",
+        "peer": "z"
+      },
+      "z": {
+        "node": "S2",
+        "interface": "e1",
+        "mac": "aa:c1:ab:1b:29:b6",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "S1",
+        "interface": "e2",
+        "mac": "aa:c1:ab:72:f2:a7",
+        "peer": "z"
+      },
+      "z": {
+        "node": "S2",
+        "interface": "e2",
+        "mac": "aa:c1:ab:01:75:83",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "S1",
+        "interface": "e3",
+        "mac": "aa:c1:ab:a6:57:70",
+        "peer": "z"
+      },
+      "z": {
+        "node": "H1",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:23:15:c2",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "S1",
+        "interface": "e4",
+        "mac": "aa:c1:ab:cc:8d:c5",
+        "peer": "z"
+      },
+      "z": {
+        "node": "H2",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:a5:b2:d7",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "S2",
+        "interface": "e3",
+        "mac": "aa:c1:ab:98:b0:d7",
+        "peer": "z"
+      },
+      "z": {
+        "node": "H3",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:e6:ef:f0",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "S2",
+        "interface": "e4",
+        "mac": "aa:c1:ab:b9:4b:b5",
+        "peer": "z"
+      },
+      "z": {
+        "node": "H4",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:34:ce:42",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "S1",
+        "interface": "e5",
+        "mac": "aa:c1:ab:ad:4f:f2",
+        "peer": "z"
+      },
+      "z": {
+        "node": "DHCP",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:35:ea:50",
+        "peer": "a"
+      }
+    }
+  ]
+}

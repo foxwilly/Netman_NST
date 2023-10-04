@@ -1,0 +1,74 @@
+! Startup-config last modified at Wed Oct  4 09:11:06 2023 by root
+! device: R4 (cEOSLab, EOS-4.30.2F-33092737.4302F (engineering build))
+!
+no aaa root
+!
+username admin privilege 15 role network-admin secret sha512 $6$q7rxnFPBdUBokO6F$WTwfyP70x9.HnajAr/2D8facyvqqxecIAYeMxXOifjJqJ5WbMKWZzsWlkiUj4J975VY5vXsqXG7BLFDgA5jtR.
+!
+transceiver qsfp default-mode 4x10G
+!
+service routing protocols model multi-agent
+!
+hostname ceos4
+!
+snmp-server community public ro
+!
+spanning-tree mode mstp
+!
+system l1
+   unsupported speed action error
+   unsupported error-correction action error
+!
+management api http-commands
+   no shutdown
+!
+management api gnmi
+   transport grpc default
+!
+management api netconf
+   transport ssh default
+!
+interface Ethernet1
+   no switchport
+!
+interface Ethernet2
+   no switchport
+   ip address 192.168.30.3/24
+   ip ospf area 0.0.0.0
+!
+interface Ethernet3
+   no switchport
+   ip address 192.168.21.1/24
+   ip ospf area 0.0.0.0
+!
+interface Ethernet4
+   no switchport
+   ip address 192.168.12.2/24
+!
+interface Loopback0
+   ip address 4.4.4.4/32
+!
+interface Management0
+   ip address 172.20.20.3/24
+   ipv6 address 2001:172:20:20::3/64
+!
+interface Management1
+   ip address 172.20.20.6/24
+   ipv6 address 2001:172:20:20::6/64
+!
+ip routing
+!
+router bgp 65000
+   neighbor 192.168.12.1 remote-as 65000
+   network 10.1.0.0/24
+   network 192.168.12.0/24
+   network 192.168.21.0/24
+   network 192.168.30.0/24
+!
+router ospf 1
+   router-id 4.4.4.4
+   redistribute bgp
+   network 0.0.0.0/0 area 0.0.0.0
+   max-lsa 12000
+!
+end
