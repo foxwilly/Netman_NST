@@ -1,4 +1,3 @@
-! Command: show running-config
 ! device: ceos2 (cEOSLab, EOS-4.30.2F-33092737.4302F (engineering build))
 !
 no aaa root
