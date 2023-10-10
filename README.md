@@ -5,7 +5,7 @@ Boulder, which is known for producing the best MANE’s in the industry. They ha
 into the role of Senior Network Architect–and assigned you a project that will take
 approximately 12 weeks to complete
 
-The solution designed use five [FRR](https://frrouting.org/) routers connected four [OVS](https://www.openvswitch.org/)  swithes workign as L2 swithes, as shown int the diagram: 
+The solution designed use five Arista CEOS4.30.2f  routers connected four [OVS](https://www.openvswitch.org/)  swithes workign as L2 swithes, as shown int the diagram: 
 
 
 ![Lab Topology](img/bgp_frr.png)
