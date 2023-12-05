@@ -1,0 +1,32 @@
+{% extends "layout2.html" %}
+{% block title %}
+Protocols
+{% endblock %}
+{% block title2 %}
+BGP Neighbors
+{% endblock %}
+{% block content %}
+    {% for key, bgp_neighbors in routers.items() %}
+    <table class="table table-striped table-sm">
+        <thead>
+            <tr>
+                <th>Router</th>
+                <th>Neighbor</th>
+                <th>AS Number</th>
+                <th>State</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for neighbor in bgp_neighbors %}
+            <tr>
+                <td>{{ key }}</td>
+                <td>{{ neighbor[0] }}</td>
+                <td>{{ neighbor[1] }}</td>
+                <td>{{ neighbor[2] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </tr>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "layout2.html" %}
+{% block title %}
+Transaction Result
+{% endblock %}
+{% block content %}
+<div class="navbar">
+       <!--  <a class="nav-link" href="{{ url_for('enternew') }}"><span data-feather="plus-circle"></span>New Router</a> -->
+        <a class="nav-link" href="{{ url_for('tshoot') }}"><span data-feather="list"></span> Back to Troubleshooting List</a>
+</div>
+        <strong>Result of the database transaction:</strong> <br>
+        <textarea readonly>{{ msg }}</textarea>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "layout2.html" %}
+{% block title %}
+IPs availability
+{% endblock %}
+{% block title2 %}
+IPs availability
+{% endblock %}
+{% block content %}
+    <table border="1">
+        <tr>
+            <th>Key</th>
+            <th>Value</th>
+        </tr>
+        {% for key, value in data.items() %}
+            <tr>
+                <td>{{ key }}</td>
+                <td>{{ value }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <form method="POST">
+    <input type="submit" value="Allocate">
+{% endblock %}

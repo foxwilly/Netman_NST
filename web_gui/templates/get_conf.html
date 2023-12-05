@@ -1,20 +1,19 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Cisco Router Configuration</title>
-</head>
-<body>
-    <h2>Stored Configurations:</h2>
-    <a href="/"> <span> Return Home</span></a>
-    <ul>
-        {% for config in router_configs %}
-            <pre>{{ config }}</pre>
-        {% endfor %}
-    </ul>
-    <h5>Save Configuration:</h5>
-    <form method="POST">
-        file name: <input type="text" name="file_name"><br>
-        <input type="submit" value="Submit">
-    </form>
-</body>
-</html>
+{% extends "layout2.html" %}
+{% block title %}
+Transaction Result
+{% endblock %}
+{% block title2 %}
+Stored Configuration
+{% endblock %}
+{% block content %}
+<h5>Save Configuration:</h5>
+<form method="POST">
+    file name: <input type="text" name="file_name">
+    <input type="submit" value="Save">
+</form>
+<br>
+    {% for config in router_configs %}
+        {{ config }} <br>
+    {% endfor %}
+
+{% endblock %}

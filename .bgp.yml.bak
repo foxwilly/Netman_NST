@@ -1,0 +1,165 @@
+name: bgp
+
+topology:
+  defaults:
+    kind: linux
+    # img for hosts
+    image: wbitt/network-multitool:alpine-minimal
+  nodes:
+  # BGP ROUTERS
+    Webserver:
+      exec:
+        - ip addr add 192.168.10.2/24 dev eth1
+        - ip route replace 0/0 via 192.168.10.1
+    NMAS:
+      exec:
+        - ip addr add 192.168.30.2/24 dev eth1
+        - ip route replace 0/0 via 192.168.30.1
+    S3:
+      image: globocom/openvswitch
+      exec:
+        - ovs-vsctl add-br ovsbr0
+        - ifconfig ovsbr0 up
+
+    S4:
+      image: globocom/openvswitch
+      exec:
+        - ovs-vsctl add-br ovsbr0
+        - ifconfig ovsbr0 up
+
+    # RIP ROUTERS
+    R1:
+      kind: ceos
+      image: ceos:4.30.2F
+      startup-config: config/R1/ceos_r1.cfg
+      binds:
+        - config/mymapping.json:/mnt/flash/EosIntfMapping.json:ro
+      ports:
+        - 6031:6030 
+    R2:
+      kind: ceos
+      image: ceos:4.30.2F
+      startup-config: config/R2/ceos_r2.cfg
+      binds:
+        - config/mymapping.json:/mnt/flash/EosIntfMapping.json:ro
+      ports:
+        - 6032:6030 
+    R3:
+      kind: ceos
+      image: ceos:4.30.2F
+      startup-config: config/R3/ceos_r3.cfg
+      binds:
+        - config/mymapping.json:/mnt/flash/EosIntfMapping.json:ro
+      ports:
+        - 6033:6030 
+    R4:
+      kind: ceos
+      image: ceos:4.30.2F
+      startup-config: config/R4/ceos_r4.cfg
+      binds:
+        - config/mymapping.json:/mnt/flash/EosIntfMapping.json:ro
+ #     ports:
+ #       - 6032:6030 
+    R5:
+      kind: ceos
+      image: ceos:4.30.2F
+      startup-config: config/R5/ceos_r5.cfg
+      binds:
+        - config/mymapping.json:/mnt/flash/EosIntfMapping.json:ro
+ #     ports:
+ #       - 6032:6030 
+    S1:
+      image: globocom/openvswitch
+      exec:
+        - ovs-vsctl add-br ovsbr0
+        - ifconfig ovsbr0 up
+    S2:
+      image: globocom/openvswitch
+      exec:
+        - ovs-vsctl add-br ovsbr0
+        - ifconfig ovsbr0 up
+    H1:
+      binds:
+        - config/H1/interfaces:/etc/network/interfaces
+      exec:
+        #        - ip addr add 10.1.0.2/24 dev eth1
+        - ip addr flush dev eth1  # Clear any existing IP configuration (optional)
+        - ifup eth1
+          #- ip route replace 0/0 via 10.1.0.1
+    H2:
+      exec:
+        - ip addr add 20.1.0.2/24 dev eth1
+        - ip route replace 0/0 via 20.1.0.1
+    H3:
+      exec:
+        - ip addr add 10.1.0.3/24 dev eth1
+        - ip route replace 0/0 via 10.1.0.1
+    H4:
+      exec:
+        - ip addr add 20.1.0.3/24 dev eth1
+        - ip route replace 0/0 via 20.1.0.1
+    DHCP:
+      #image: docker.io/mobylinux/dhcpcd:3eb32da7ff8051f61e0f18edd90dd0fbfcf148ea
+      image: dhcp-image 
+      binds:
+        - config/dhcpd.conf:/dhcpcd.conf
+        - config/dhcpd.conf:/etc/dhcpcd.conf
+      exec:
+        - ip addr add 10.1.0.100/24 dev eth1
+        - ip route replace 0/0 via 10.1.0.1
+
+    prometheus:
+      kind: linux
+      image: prom/prometheus:latest
+      user: 65534:65534
+      ports:
+        - 9090:9090
+      binds:
+        - ./config/prometheus/:/etc/prometheus/
+      cmd: |
+        --config.file=/etc/prometheus/prometheus.yaml
+        --web.console.libraries=/usr/share/prometheus/console_libraries
+        --web.console.templates=/usr/share/prometheus/consoles
+        --log.level=debug
+
+    grafana:
+      kind: linux
+      image: grafana/grafana:latest
+      binds:
+        - config/grafana/datasources/datasource.yaml:/etc/grafana/provisioning/datasources/datasource.yaml:ro
+        - config/grafana/dashboards.yaml:/etc/grafana/provisioning/dashboards/dashboards.yaml:ro
+        - config/grafana/dashboards/:/var/lib/grafana/dashboards
+      ports:
+        - 3000:3000
+  links:
+  #BGP 
+    - endpoints: ["R5:eth4", "R4:eth4"]
+    - endpoints: ["R4:eth3", "R3:eth3"]
+    - endpoints: ["R3:eth2", "R5:eth3"]
+    #  web server - R5
+    - endpoints: ["Webserver:eth1", "R5:eth2"]
+    # R3 - S3
+    - endpoints: ["R3:eth4", "S3:e1"]
+    # R4 -S4
+    - endpoints: ["R4:eth2", "S4:e1"]
+    # S3 - S4
+    - endpoints: ["S3:e2", "S4:e2"]
+    # NMAS - S3
+    - endpoints: ["NMAS:eth1", "S3:e3"]
+    # S3 - R1
+    - endpoints: ["S3:e4", "R1:eth2"]
+    # S4 - R2
+    - endpoints: ["S4:e3", "R2:eth2"]
+    # R1 - S1
+    - endpoints: ["R1:eth3", "S1:e1"]
+    # R2 - S2
+    - endpoints: ["R2:eth3", "S2:e1"]
+    # S1 - S2
+    - endpoints: ["S1:e2", "S2:e2"]
+    # VLANS
+    - endpoints: ["S1:e3", "H1:eth1"]
+    - endpoints: ["S1:e4", "H2:eth1"]
+    - endpoints: ["S2:e3", "H3:eth1"]
+    - endpoints: ["S2:e4", "H4:eth1"]
+  #dhcp
+    - endpoints: ["S1:e5", "DHCP:eth1"]

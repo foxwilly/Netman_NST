@@ -1,0 +1,48 @@
+{% extends "layout2.html" %}
+{% block title %}
+List Routers
+{% endblock %}
+{% block title2 %}
+Tshooting BGP
+{% endblock %}
+{% block content %}
+<div class="navbar">
+    <a class="nav-link" href="{{ url_for('addsteps') }}"><span data-feather="plus-circle"></span>New Step</a>
+</div>
+{{msg}}
+        <table class="table table-striped table-sm">
+            <thead>
+                <td><strong>Step</strong></td>
+                <td><strong>Action</strong></td>
+                <td><strong>Status</strong></td>
+                <td><strong>Check</strong></td>
+                <td></td>
+            </thead>
+            {% for row in rows %}
+            <tr>
+                <td>{{ row["step"] }}</p></td>
+                <td>{{ row["action"] }}</td>
+                {% if row["status"] == "FAIL" %}
+                    <td style="color: red;"> {{ row["status"]}}</td>
+                {% else %}
+                    <td style="color: green;"> {{ row["status"]}}</td>
+                {% endif %}
+                <td>
+                    <form onsubmit="return confirm('This will run the check again');" action="{{url_for('review')}}" method="POST">
+                    <input type="hidden" name="id" value="{{ row['step'] }}">
+                    <input type="hidden" name="id2" value="{{ row['rowid'] }}">
+                    <input type="hidden" name="vaction" value="review">
+                    <input type="submit" value="Review">
+                    </form> 
+                </td>
+                <td>
+                    <form onsubmit="return confirm('This will ask Chat GPT a fix for this issue');" action="{{url_for('review')}}" method="POST">
+                        <input type="hidden" name="id" value="{{ row['step'] }}">
+                        <input type="hidden" name="vaction" value="chatgpt">
+                        <input type="submit" value="Ask ChatGPT">
+                    </form> 
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+{% endblock %}
