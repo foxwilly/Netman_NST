@@ -1,0 +1,39 @@
+{% extends "layout2.html" %}
+{% block title %}
+List Routers
+{% endblock %}
+{% block title2 %}
+List All Routers
+{% endblock %}
+{% block content %}
+<div class="navbar">
+    <a class="nav-link" href="{{ url_for('enternew') }}"><span data-feather="plus-circle"></span>New Router</a>
+</div>
+        <table class="table table-striped table-sm">
+            <thead>
+                <td><strong>Hostname</strong></td>
+                <td><strong>Type</strong></td>
+                <td><strong>Interface</strong></td>
+                <td><strong>IP</strong></td>
+                <td><strong>Protocol</strong></td>
+                <td><strong>Config File</strong></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </thead>
+
+            {% for row in rows %}
+            <tr>
+                <td>{{ row["hostname"] }}</td>
+                <td>{{ row["type"] }}</td>
+                <td> {{ row["interface"]}}</td>
+                <td>{{ row["ip"] }}</td>
+                <td>{{ row["proto"] }}</td>
+                <td>{{ row["file"] }}</td>
+                <td><form action="{{url_for('edit')}}" method="POST"><input type="hidden" name="id" value="{{ row['rowid'] }}"><input type="submit" value="Edit"></form> </td>
+                <td><form onsubmit="return confirm('Are you sure you want to DELETE this Router from the Database?');" action="{{url_for('delete')}}" method="POST"><input type="hidden" name="id" value="{{ row['rowid'] }}"><input type="submit" value="Delete"></form> </td>
+                <td><form onsubmit="return confirm('Are you sure you want to DEPLOY this Router in the network?');" action="{{url_for('delete')}}" method="POST"><input type="hidden" name="id" value="{{ row['rowid'] }}"><input type="submit" value="Deploy"></form> </td>
+            </tr>
+            {% endfor %}
+        </table>
+{% endblock %}

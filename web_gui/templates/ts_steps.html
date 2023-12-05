@@ -1,0 +1,31 @@
+{% extends "layout2.html" %}
+{% block title %}
+ New Router
+{% endblock %}
+{% block title2 %}
+New Tshooting Steps Information:
+{% endblock %}
+{% block content %}
+
+        <form action="{{ url_for('addsteps') }}" method="POST">
+            Name Tshoot<br>
+            <input type="text" name="name" /><br>
+
+            Step<br>
+            <input type="text" name="step" /><br>
+
+            Action<br>
+            <input type="text" name="action" /><br>
+
+            Status<br>
+            <input type="text" name="status" /><br>
+
+            Checks<br>
+            <input type="text" name="checks" /><br>
+
+            Question<br>
+            <input type="text" name="question" /><br>
+
+            <input type="submit" value="Submit" /><br>
+        </form>
+{% endblock %}

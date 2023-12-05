@@ -1,0 +1,36 @@
+{% extends "layout2.html" %}
+{% block title %}
+ New Router
+{% endblock %}
+{% block title2 %}
+New Router Information:
+{% endblock %}
+{% block content %}
+        <form action="{{ url_for('addrec') }}" method="POST">
+            Hostname<br>
+            <input type="text" name="host" /><br>
+
+            Type<br>
+            <input type="text" name="type" /><br>
+
+            Username<br>
+            <input type="text" name="usr" /><br>
+
+            Password<br>
+            <input type="text" name="pwd" /><br>
+
+            File<br>
+            <input type="text" name="file" /><br>
+
+            Interface<br>
+            <input type="text" name="inter" /><br>
+
+            ip<br>
+            <input type="text" name="ip" /><br>
+
+            Protocol<br>
+            <input type="text" name="proto" /><br>
+
+            <input type="submit" value="Submit" /><br>
+        </form>
+{% endblock %}

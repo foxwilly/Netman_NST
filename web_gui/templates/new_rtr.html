@@ -1,22 +1,21 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title> Router Configuration</title>
-</head>
-<body>
-    <h1> Router Configuration</h1>
-
-    <h2>Enter Router Configuration:</h2>
-    <a href="/"> <span> Return Home</span></a>
+{% extends "layout2.html" %}
+{% block title %}
+Router Configuration
+{% endblock %}
+{% block title2 %}
+Router Configuration
+{% endblock %}
+{% block content %}
     <form method="POST">
-        Hostname: <input type="text" name="hostname"><br>
-        Username: <input type="text" name="username"><br>
-        Password: <input type="password" name="password"><br>
-        Configuration: <textarea name="config" rows="4" cols="70">
+        Hostname:<br> <input type="text" name="hostname"><br>
+        Username:<br> <input type="text" name="username"><br>
+        Password:<br> <input type="password" name="password"><br>
+        Configuration:<br> <textarea name="config" rows="4" cols="70">
             {% for text in txt_contents %}
                {{ text }}
             {% endfor %}
         </textarea><br>
+        <a href="/get_ips">Get IPs</a><br>
         <input type="submit" value="Submit">
     </form>
 
@@ -24,13 +23,11 @@
     <ul>
         {% for config in router_configs %}
         <li>
-            Hostname: {{ config.hostname }}<br>
-            Username: {{ config.username }}<br>
-            Password: {{ config.password }}<br>
-            Configuration: <pre>{{ config.config }}</pre><br>
+            Hostname:<br> {{ config.hostname }}<br>
+            Username:<br> {{ config.username }}<br>
+            Password:<br> {{ config.password }}<br>
+            Configuration:<br> <pre>{{ config.config }}</pre><br>
         </li>
         {% endfor %}
     </ul>
-    
-</body>
-</html>
+{% endblock %}

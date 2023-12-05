@@ -1,0 +1,40 @@
+{% extends "layout2.html" %}
+{% block title %}
+Edit 
+{% endblock %}
+{% block title2 %}
+Edit Router
+{% endblock %}
+{% block content %}
+        {% for row in rows %}
+        <form action="{{ url_for('editrec') }}" method="POST">
+            <h3 style="color:blue"> ID: {{ row['rowid']}}</h3>
+            <input type="hidden" name="rowid" value="{{ row['rowid'] }}">
+            Hostname<br>
+            <input type="text" name="host" value="{{ row['hostname'] }}"/><br>
+
+            Type<br>
+            <input type="text" name="type" value="{{row['type']}}"/><br>
+
+            Username<br>
+            <input type="text" name="usr" value="{{ row['username'] }}"/><br>
+
+            Password<br>
+            <input type="text" name="pwd" value="{{ row['password'] }}"/><br>
+
+            File Name<br>
+            <input type="text" name="file" value="{{ row['file'] }}"/><br>
+
+            Interface Name<br>
+            <input type="text" name="inter" value="{{ row['interface'] }}"/><br>
+
+            IP Address<br>
+            <input type="text" name="ip" value="{{row['ip']}}"/><br>
+
+            Protocol<br>
+            <input type="text" name="proto" value="{{ row['proto'] }}"/><br>
+
+            <input type="submit" value="Submit" /><br>
+        </form>
+        {% endfor %}
+{% endblock %}
